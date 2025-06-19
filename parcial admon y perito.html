@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El huésped de Drácula y más cuentos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to right, rgb(20, 0, 0), rgb(60, 0, 0));
+      color: #f8f8f8;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    nav {
+      background-color: #1a0000 !important;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1050;
+    }
+    .nav-link, .navbar-brand {
+      color: #fff !important;
+      cursor: pointer;
+    }
+    .dropdown-menu {
+      background-color: #2b0000;
+    }
+    .dropdown-menu a.dropdown-item {
+      color: #ff4c4c;
+      cursor: pointer;
+    }
+    .dropdown-menu a.dropdown-item:hover {
+      background-color: #7d0000;
+      color: white;
+    }
+    .container {
+      padding-top: 6rem;
+      max-width: 900px;
+    }
+    .text-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 0, 0, 0.2);
+    }
+    h2 {
+      color: #ff4c4c;
+      animation: spookyText 5s infinite;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    @keyframes spookyText {
+      0%, 100% { opacity: 1; transform: scale(1) translateX(0); }
+      20% { opacity: 0.7; }
+      40% { opacity: 1; transform: scale(1.03) translateX(2px); }
+      60% { opacity: 0.7; transform: scale(0.98) translateX(-2px); }
+      80% { opacity: 1; transform: scale(1.01) translateX(1px); }
+    }
+    #personaje {
+      width: 160px;
+      animation: float 3s infinite;
+      cursor: pointer;
+      filter: drop-shadow(0 0 15px crimson);
+      display: block;
+      margin: 2rem auto 3rem;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    .extra-img {
+      display: block;
+      margin: 1rem auto 0.8rem;
+      max-width: 90%;
+      border: 2px solid rgba(255, 0, 0, 0.4);
+      border-radius: 10px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+  .main-title {
+    font-size: 1.8rem;
+    margin-top: 5rem;
+  }
+
+  #personaje {
+    width: 100px;
+  }
+
+  .text-box {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  nav .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .dropdown-menu {
+    font-size: 0.9rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Drácula y Más</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Resumen -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#resumen"
+              id="resumenDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Resumen</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="resumenDropdown">
+              <li><a class="dropdown-item speak-text" data-target="resumen" href="#resumen">Resumen</a></li>
+              <li><a class="dropdown-item speak-text" data-target="analisis" href="#analisis">Análisis</a></li>
+              <li><a class="dropdown-item speak-text" data-target="personajes" href="#personajes">Personajes Principales</a></li>
+              <li><a class="dropdown-item speak-text" data-target="curiosidades" href="#curiosidades">Curiosidades</a></li>
+            </ul>
+          </li>
+
+        
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#autor"
+              id="autorDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Autor</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="autorDropdown">
+              <li><a class="dropdown-item speak-text" data-target="estilo" href="#estilo">Estilo Narrativo</a></li>
+              <li><a class="dropdown-item speak-text" data-target="temas" href="#temas">Temas</a></li>
+              <li><a class="dropdown-item speak-text" data-target="eventos" href="#eventos">Eventos</a></li>
+            </ul>
+          </li>
+
+          
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#impacto"
+              id="impactoDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Impacto</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="impactoDropdown">
+              <li><a class="dropdown-item speak-text" data-target="ensenanza" href="#ensenanza">Enseñanza</a></li>
+              <li><a class="dropdown-item speak-text" data-target="simbolismo" href="#simbolismo">Simbolismo</a></li>
+              <li><a class="dropdown-item speak-text" data-target="espacios" href="#espacios">Espacios y Tiempo</a></li>
+            </ul>
+          </li>
+
+          
+          <li class="nav-item">
+            <a class="nav-link speak-text" data-target="critico" href="#critico">Crítico</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <img id="personaje" src="https://png.pngtree.com/png-clipart/20240510/original/pngtree-vector-halloween-dracula-vampire-vintage-cartoon-style-png-image_15061585.png" alt="Personaje Vampiro" />
+
+    <div id="resumen" class="text-box">
+      <h2>Resumen</h2>
+      <img class="extra-img" src="https://img.pacifiko.com/PROD/resize/1/500x500/ZGNhZTM1OD_1.jpg" alt="Niebla y tumba" />
+      <p> es un relato corto escrito por bram stoker, considerando un capitulo eliminado de la novela Drácula. La historiase sitúa de Munchi, Alemania y esta narrada en primera persona por un joven ingles (se cree que es Jonathan Harker), quien se encuentra viajando por Europa antes de llegar a Transilvania 
+
+        En la víspera de Walpurgisnacht (la noche de brujas germánica, celebrada el 30 de abril), el protagonista decide salir solo a explorar los alrededores Munchi, a pesar advertencias del cochero y del hotelero. La atmosfera se torna cada vez mas tenebrosa: el clima se vuelve gélido , y una tormenta comienza a formarse. Ignorando el peligro, el joven cabalgaba hasta llegar a un antiguo camino que lo lleva a un cementeriio abandonado y cubierto de nieve.
+        
+        
+        Una vez alli, descubre una tumba con una inscripcion en aleman que menciona a la "Condesa Dolinge de Graz", una figura enigmatica que aparentemente murio joven. De joven repente, se ve envuelto en una extraña tormenta sobrenatural. Una figura fantasmal parece emerger de la tumba, y lobos comienzan a acercarse. El joven cae inconsientementepor el frio y el miedo 
+        
+        Mas tarde, despierta en una cama, atendido por medicos y autoridades barvaras, le informa que fue encontrado inconsiente, rodeado lobos, pero misteriosamente, ninguno ataco. El embajador ingles tambien aparece y menciona que recibio una carta urgente del "amigo"del joven (en clara referencia al conde Dracula), quien habia advertido que debia ser vigilado de cerca 
+        
+        
+        A lo largo del relato, el ambiente gotico, la tension sobrenatural y los elementos de vampirismo anticipan el tono de novela Dracula. Aunque Draculo no parece fisicamente en esta historia, su presencia se insinua, y se entiende que el protagonista, pues necesita que llegue vivo a su castillo en Transilvania.
+        
+        
+        Este cuento, publico postumamente en 1914 por la vida de Stoker, proporciona un prologo interesante a la famosa novela. Muestra el estilo caracteristico del autor: descripcion sombrias, suspenso, lo oculto mezclado con la supersticion europea. Ademas, profundiza en la mitologia vampirica desde una perspectiva previa al encuentro directo con el conde Dracula.</p>
+    </div>
+
+    
+    <div id="analisis" class="text-box">
+      <h2>Análisis</h2>
+      <img class="extra-img" src="https://marcainteligente.com/wp-content/uploads/2024/04/Pagina-de-manuscrito-original-de-Dracula-por-Bram-Stoker.png" width="180px" alt="Castillo oscuro" />
+      <p>El relato utiliza símbolos góticos clásicos para generar una atmósfera opresiva y tensa, jugando con el miedo a lo invisible y lo inexplicable.</p>
+    </div>
+
+    
+    <div id="personajes" class="text-box">
+      <h2>Personajes Principales</h2>
+      <img class="extra-img" src="https://www.fabulantes.com/2020/11/el-invitado-de-dracula-bram-stoker/el-invitado-de-dracula-bastian-kupfer/" width="150px" alt="Personaje Vampiro" />
+      <ul>
+        <li><strong>Viajero:</strong> curioso, valiente, pero imprudente.</li>
+        <li><strong>Conductor:</strong> supersticioso, protector.</li>
+        <li><strong>Entidades oscuras:</strong> símbolo de lo prohibido.</li>
+      </ul>
+    </div>
+    <div id="curiosidades" class="text-box">
+        <h2>Curiosidades</h2>
+        <img class="extra-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNTsVt1ZeWvQrHWQpABQCnHx3CzaJVqMDc3nwIdWYkPgET2IFdFifXwBICSSq0pfQ6MGr1i2oJdOQOf4ZTRSK_Iqo9DXcWws_C-VYfSCH2I9zlCIiMutAsdLb6eT6G4N5Zho19kCeLdVtr/s1600/huesped_de_dracula_Stoker_relato.jpg" width="180px" alt="Bosque tenebroso" />
+        <p>El relato se inspira en leyendas europeas y la figura mítica del vampiro, creando una atmósfera que ha influenciado al género de terror.</p>
+      </div>
+  
+    
+      <div id="autor" class="text-box">
+        <h2>Sobre el Autor</h2>
+        <p>Bram stoker
+
+          Fue un escritor irlandés nacido el 8 de noviembre de 1847 y fallecido en 1912 a la edad de 64 años. Fue el tercero de siete hijos de Abraham Stoker y Charlotte Mathilda Blake. Su infancia estuvo marcada por una salud débil, lo que lo llevo a pasar mucho tiempo en la cama leyendo y desarrollando su imaginación.
+          
+          Stoker trabajo como secretario personal de Sir Henry Irving, un famoso actor y director de teatro, y también escribió artículos y criticas literarias. Sin embargo, fue su novela "Drácula" la que lo convirtió en un autor famoso y ha perdurado en la cultura popular.
+          
+          ESCRITURA Y EXITO
+          
+          Stoker comenzó a escribir historias cortas y novelas en la década de 1870 pero no fue hasta la publicación de "Drácula" en 1897 que ha tenido un impacto duradero en la literatura de terror y ha sido adaptada a numerosas películas, obras de teatro y otras formas de medios.
+          
+          Algunas de sus obras notables fueron:
+          
+          "Drácula" (1897)
+          "El huésped de Drácula y otros relatos"
+          "La joya de las siete estrellas"
+          
+          Stoker es considerado uno de los maestros del terror gótico y su obra ha influido en generaciones de escritores y cineastas.     </div>
+  
+    
+      <div id="estilo" class="text-box">
+        <h2>Estilo Narrativo</h2>
+        <p>El cuento "El huésped de Drácula" tiene un estilo narrativo en primera persona, ya que es el protagonista quien cuenta lo que le pasa. El n autor usa muchas descripciones para crear una atmosfera oscura y de miedo. El lenguaje es un poco antiguo porque fue escrito hace mucho tiempo, y tiene un tono gótico, con cosas sobrenaturales, soledad y suspenso. Todo esto hace que el lector sienta tensión y misterio mientras lee.</p>
+      </div>
+  
+      
+      <div id="temas" class="text-box">
+        <h2>Temas</h2>
+        <p>El miedo y la amenaza sobrenatural:
+          
+          El relato explora el miedo a lo desconocido y alas fuerzas sobrenaturales.
+          
+          La naturaleza del mal:
+          
+          El cuento plantea la pregunta de qué es el mal y cómo se manifiesta en el mundo.
+          
+          La fragilidad humana:
+          
+          La historia muestra la fragilidad del ser humano ante la naturaleza y las fuerzas 
+          sobrenaturales.
+          
+          La atmósfera gótica:
+          
+          La novela crea una atmósfera gótica, utilizando elementos como la oscuridad, la nieve, 
+          los pueblos abandonados y los vampiros para generar miedo y tensión. .</p>
+      </div>
+  
+      
+      <div id="eventos" class="text-box">
+        <h2>Eventos</h2>
+        <p>El viaje a Transilvania:
+
+          El narrador, un caballero inglés, viaja a Transilvania para visitar al conde Drácula.
+          
+          El pueblo abandonado:
+          
+          El narrador se encuentra con un pueblo abandonado y solitario, lo que aumenta la sensación 
+          de desolación y amenaza.
+          
+          La tormenta de nieve:
+          
+          Una tormenta de nieve inesperada añade más terror a la situación, dificultando el viaje del
+          narrador y creando un ambiente gótico y amenazante.
+          
+          El refugio en la tumba:
+          
+          El narrador busca refugio en una tumba de mármol donde encuentra a una mujer que parece
+          un vampiro.
+          
+          La aparición del lobo:
+          
+          Un lobo posiblemente Drácula, aparece y ataca al narrador, mostrando la presencia del 
+          peligro sobrenatural
+          
+          El rescate:
+          
+          Finalmente un grupo de soldados rescata al narrador del pueblo abandonado, marcando
+          el fin de su experiencia terrorífica.
+          
+          La noche de Walpurgis:
+          
+          El relato se sitúa en la noche de Walpurgis, una noche en la que según las creencias populares, las fuerzas maléficas se reúnen.
+          
+          
+          
+          </p>
+      </div>
+  
+      
+      <div id="impacto" class="text-box">
+        <h2>Impacto</h2>
+        <p>Obra fundamental del terror gótico que ha influenciado libros, películas y la cultura popular.</p>
+      </div>
+  
+    
+      <div id="enseñanza" class="text-box">
+        <h2>Enseñanza</h2>
+        <p>La principal enseñanza de El huésped de Drácula gira en torno a los peligros de la imprudencia y la importancia de respetar las advertencias y las tradiciones locales , especialmente cuando uno se encuentra en un lugar desconocido. El protagonista, por curiosidad y orgullo , desoye las advertencias de cochero y del hotelero sobre no salir durante de Walpurgisnacht, lo que casi le cuesta la vida. Esta  actitud refleja como el exceso de confianza y la subestimación de lo desconocido puede llevar a consecuencias peligrosas. </p>
+      </div>
+  
+    
+      <div id="simbolismo" class="text-box">
+        <h2>Simbolismo</h2>
+        <p>El vampiro representa el peligro de la corrupción y la tentación, mientras que el castillo es la prisión del alma.</p>
+      </div>
+  
+    
+      <div id="espacios" class="text-box">
+        <h2>Espacios y Tiempo</h2>
+        <p>El relato se ubica en un espacio gótico atemporal que refuerza la sensación de encierro y misterio.</p>
+      </div>
+  
+    
+      <div id="critico" class="text-box">
+        <h2>Crítico</h2>
+        <p>La obra es una joya literaria que mezcla terror y romanticismo, aunque algunas descripciones pueden parecer extensas para lectores modernos.</p>
+      </div>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
